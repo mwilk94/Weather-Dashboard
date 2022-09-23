@@ -10,7 +10,7 @@ As a traveler, do you plan your travels according to the weather? Would you like
 2. View the 5-day forcast and current weather conditions for that city.
 3. Revisit previous cities in your search history and be presented with it's forcast.
 
-![Image Caption](images/searchresult.png)
+![Image Caption](/images/searchresult.png)
 
 ## 💻 Usage
 
