@@ -129,3 +129,47 @@ function currentForeCast(city) {
     });
   });
 }
+
+function getSearchLists() {
+  $("#city-list").empty();
+
+  var searchHistory = JSON.parse(localStorage.getItem("city")) || [];
+
+  var numOfCities = searchHistory.length;
+
+  for (var i = 0; i < numOfCities; i++) {
+    var appendBlock = `<button class="list-group-item list-group-item-action">
+                        ${searchHistory[i].name}
+                      </button>`;
+
+    $("#city-list").append(appendBlock);
+  }
+}
+
+$("#search-button").on("click", function (event) {
+  event.preventDefault();
+
+  var city = $("#search-input").val().trim();
+
+  if (city === "") {
+    return;
+  }
+
+  var searchHistory = JSON.parse(localStorage.getItem("city")) || [];
+  var citySearch = {
+    name: city,
+    value: true,
+  };
+  searchHistory.push(citySearch);
+  localStorage.setItem("city", JSON.stringify(searchHistory));
+  getSearchLists();
+
+  cityWeather(city);
+});
+
+$("#search-button").keypress(function (event) {
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    $("#search-button").click();
+  }
+});
