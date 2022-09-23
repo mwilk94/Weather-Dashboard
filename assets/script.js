@@ -113,7 +113,6 @@ function currentForeCast(city) {
       url: uvURL,
       method: "GET",
     }).then(function (data) {
-      //var uvIndexDisplay = $("<button>");
       console.log(data);
       var uvValue = data[0].value;
       var appendBlock = ``;
